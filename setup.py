@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
-# get version from __version__ variable in lending/__init__.py
-from lending import __version__ as version
+# get version from __version__ variable in kb_lending/__init__.py
+from kb_lending import __version__ as version
 
 with open("requirements.txt") as f:
 	install_requires = f.read().strip().split("\n")
 
 setup(
-	name="lending",
+	name="kb_lending",
 	version=version,
 	description="Lending",
 	author="Frappe",

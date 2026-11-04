@@ -4,15 +4,15 @@ include *.json
 include *.md
 include *.py
 include *.txt
-recursive-include lending *.css
-recursive-include lending *.csv
-recursive-include lending *.html
-recursive-include lending *.ico
-recursive-include lending *.js
-recursive-include lending *.json
-recursive-include lending *.md
-recursive-include lending *.png
-recursive-include lending *.py
-recursive-include lending *.svg
-recursive-include lending *.txt
-recursive-exclude lending *.pyc
+recursive-include kb_lending *.css
+recursive-include kb_lending *.csv
+recursive-include kb_lending *.html
+recursive-include kb_lending *.ico
+recursive-include kb_lending *.js
+recursive-include kb_lending *.json
+recursive-include kb_lending *.md
+recursive-include kb_lending *.png
+recursive-include kb_lending *.py
+recursive-include kb_lending *.svg
+recursive-include kb_lending *.txt
+recursive-exclude kb_lending *.pyc

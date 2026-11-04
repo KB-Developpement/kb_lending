@@ -66,5 +66,5 @@ CI=Yes bench build --app frappe &
 bench --site test_site reinstall --yes
 
 bench get-app "${GITHUB_WORKSPACE}"
-bench --site test_site install-app lending
+bench --site test_site install-app kb_lending
 bench setup requirements --dev

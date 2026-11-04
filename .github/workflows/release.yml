@@ -1,0 +1,62 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract version from tag
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Extract release notes from CHANGELOG.md
+        id: changelog
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        # `shell: bash` opts into `bash --noprofile --norc -eo pipefail`. Without it
+        # the default is plain `bash -e`, where a pipeline's status is the LAST
+        # command's — so `awk missing-file | sed > out` exited 0 and the release was
+        # published with an empty body instead of failing. Both halves matter: the
+        # guard below stops the failure, pipefail stops the silence.
+        shell: bash
+        run: |
+          : > release_notes.md
+          # Match the full version token, not a tag-derived regular expression.
+          if [ -f CHANGELOG.md ]; then
+            awk -v version="$VERSION" '
+              /^## / {
+                if (found) exit
+                if ($2 == "[" version "]") {found=1; next}
+              }
+              found && /^---[[:space:]]*$/ {exit}
+              found {print}
+            ' CHANGELOG.md > release_notes.md
+          fi
+          if [ ! -s release_notes.md ]; then
+            echo "::warning::No CHANGELOG.md entry for v$VERSION - publishing a placeholder body."
+            echo "No changelog entry was recorded for v$VERSION." > release_notes.md
+          fi
+          echo "Release notes extracted for v$VERSION"
+          cat release_notes.md
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "v${{ steps.version.outputs.version }}"
+          body_path: release_notes.md
+          draft: false
+          prerelease: ${{ contains(github.ref_name, '-') }}

@@ -1,4 +1,4 @@
 # Any python files modifed but no test files modified
 needs-tests:
-- any: ['lending/**/*.py']
-  all: ['!lending/**/test*.py']
+- any: ['kb_lending/**/*.py']
+  all: ['!kb_lending/**/test*.py']

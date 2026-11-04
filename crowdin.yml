@@ -2,8 +2,8 @@ languages_mapping:
   two_letters_code:
     pt-BR: pt_BR
 files:
-  - source: /lending/locale/main.pot
-    translation: /lending/locale/%two_letters_code%.po
+  - source: /kb_lending/locale/main.pot
+    translation: /kb_lending/locale/%two_letters_code%.po
 pull_request_title: "chore: sync translations from crowdin"
 pull_request_labels:
   - translation

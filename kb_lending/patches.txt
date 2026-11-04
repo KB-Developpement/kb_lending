@@ -1,0 +1,51 @@
+[pre_model_sync]
+# Patches added in this section will be executed before doctypes are migrated
+# Read docs to understand patches: https://frappeframework.com/docs/v14/user/en/database-migrations
+kb_lending.patches.v15_0.generate_loan_repayment_schedule
+kb_lending.patches.v15_0.rename_process_asset_classification_doctype
+kb_lending.patches.v15_0.rename_process_asset_classification_doctype_2
+kb_lending.patches.v15_0.rename_loan_type_to_loan_product
+execute:frappe.rename_doc("DocType", "Loan Security Pledge", "Loan Security Assignment", force=True)
+execute:frappe.rename_doc("DocType", "Loan Security Unpledge", "Loan Security Release", force=True)
+execute:frappe.delete_doc_if_exists("DocType", "Loan Buyback")
+kb_lending.patches.v1_0.fix_invalid_loan_product_values #2
+execute:frappe.delete_doc_if_exists("Report", "Loan Interest Report")
+
+[post_model_sync]
+# Patches added in this section will be executed after doctypes are migrated
+kb_lending.patches.v15_0.update_loan_types
+kb_lending.patches.v15_0.create_custom_fields #19
+kb_lending.patches.v15_0.create_custom_field_for_irac_provisioning_configuration
+kb_lending.patches.v15_0.update_loan_asset_classification_ranges
+kb_lending.patches.v15_0.generate_loan_classifications_from_loan_asset_classification_ranges
+kb_lending.patches.v15_0.update_company_loan_asset_classification_ranges_table
+kb_lending.patches.v15_0.update_classification_fields_in_loan
+kb_lending.patches.v15_0.create_custom_field_for_collection_offset_sequence_for_written_off_asset
+kb_lending.patches.v15_0.make_loan_type_non_submittable
+kb_lending.patches.v15_0.update_custom_fields_for_company_tab
+kb_lending.patches.v15_0.create_custom_field_for_interest_day_count_convention
+kb_lending.patches.v15_0.create_custom_field_for_bpi
+kb_lending.patches.v15_0.update_loan_column_break_due_to_bpi
+kb_lending.patches.v15_0.fix_typo_in_irac_provisioning_configuration
+kb_lending.patches.v15_0.rename_loan_partner_charge_type
+kb_lending.patches.v15_0.migrate_loan_type_to_loan_product
+kb_lending.patches.v15_0.add_loan_product_code_and_rename_loan_name
+kb_lending.patches.v15_0.update_min_bpi_application_days
+kb_lending.patches.v15_0.update_loan_security_assignment_pledge_status
+kb_lending.patches.v15_0.create_custom_field_for_collection_offset_sequence_for_settlement_collection
+kb_lending.patches.v15_0.rename_irac_provisioning_configuration_loan_product
+kb_lending.patches.v15_0.update_loan_product_accounts #2
+#kb_lending.patches.v15_0.loan_interest_accrual_changes
+kb_lending.patches.v15_0.create_accounting_dimensions_for_loan_doctypes
+kb_lending.patches.v15_0.update_maturity_date
+kb_lending.patches.v15_0.loan_repayment_schedule_status_patch
+kb_lending.patches.v15_0.loan_disbursement_status_patch
+kb_lending.patches.v1_0.rename_is_accrued_to_demand_generated #2
+kb_lending.patches.v1_0.create_custom_field_loan_accrual_rate_for_company #rerun #2
+kb_lending.patches.v1_0.add_index_for_custom_fields_for_JE
+kb_lending.patches.v1_0.update_value_date_in_loan_repayment
+kb_lending.patches.v1_0.update_value_date_in_loan_refund
+kb_lending.patches.v1_0.update_value_date_in_pending_doctypes
+kb_lending.patches.v16_0.add_enable_loan_accounting_field
+kb_lending.patches.v16_0.update_is_invoice_generated_field
+kb_lending.patches.v16_0.harmonize_fr_loan_terms
