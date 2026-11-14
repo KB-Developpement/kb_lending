@@ -9,6 +9,15 @@ and uses it as the GitHub Release body, so every released version needs a
 
 ## [Unreleased]
 
+## [1.0.1] — 2026-11-14
+
+### Fixed
+
+- French translations aligned with the platform wording (frappe, kb_pro) for labels the platform
+  already translates, since an app's translation overrides it across the whole desk (« Liaisons »,
+  « Validé », « Mode de règlement », « Reste à payer », « Réglé » instead of « Colonisé »…);
+  « Montants » and « N° de référence » in `translations/fr.csv`. No entry is added or removed.
+
 ## [1.0.0] — 2026-11-04
 
 First KB Développement release of the lending app, forked from Frappe Lending.
