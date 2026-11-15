@@ -148,3 +148,7 @@ Only submittted unpledge requests can be approved,Seules les demandes de non-eng
 Interest Amount or Principal Amount is mandatory,Le montant des intérêts ou le capital est obligatoire,
 Disbursed Amount cannot be greater than {0},Le montant décaissé ne peut pas être supérieur à {0},
 Row {0}: Loan Security {1} added multiple times,Ligne {0}: Garantie de prêt {1} ajoutée plusieurs fois,
+Loan Officer,Chargé de prêts,
+Loan Processor,Chargé du traitement des prêts,
+Loan Appraiser,Évaluateur de prêts,
+Loan Underwriter,Analyste crédit,
