@@ -9,6 +9,12 @@ and uses it as the GitHub Release body, so every released version needs a
 
 ## [Unreleased]
 
+## [1.0.2] — 2026-11-15
+
+### Changed
+
+- French names for the roles « Loan Officer » (« Chargé de prêts »), « Loan Processor » (« Chargé du traitement des prêts »), « Loan Appraiser » (« Évaluateur de prêts ») and « Loan Underwriter » (« Analyste crédit »).
+
 ## [1.0.1] — 2026-11-14
 
 ### Fixed
